@@ -24,7 +24,21 @@ class ImagePickerController: UIViewController, UICollectionViewDataSource, UICol
 
     func selectImage(_ image: UIImage) {
         //The image being selected is passed in as "image".
+        //performSegue(withIdentifier: "choosePicSegue", sender: self)
+        
     }
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "choosePicSegue" {
+                if let dest = segue.destination as? FeedTableViewController{
+                    
+                }
+            }
+        }
+        
+        
+    }*/
     
     
     
