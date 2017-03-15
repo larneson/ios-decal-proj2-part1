@@ -34,14 +34,14 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return threads["Memes"]!.count
+        return threads[threadNames[section]]!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = postTableView.dequeueReusableCell(withIdentifier: "PostViewID", for: indexPath) as! PostTableViewCell
         let currentPost = threads["Memes"]![indexPath.item]
         cell.posterName.text = currentPost.poster
-        cell.elapsedTime.text = String(describing: NSDate.timeIntervalSince(currentPost.timestamp))
+        cell.elapsedTime.text = String(DateFormatter().string(from: currentPost.timestamp as Date))
         cell.seenImage.image = #imageLiteral(resourceName: "unread")
         if currentPost.seen {
             cell.seenImage.image = #imageLiteral(resourceName: "read")
