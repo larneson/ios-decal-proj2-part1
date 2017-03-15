@@ -12,10 +12,17 @@ class PhotoViewController: UIViewController {
 
     @IBOutlet weak var img: UIImageView!
     
+    var currentPost : Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
+        if let post = currentPost {
+            img.image = post.image
+        }
     }
 
     override func didReceiveMemoryWarning() {

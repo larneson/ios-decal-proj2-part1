@@ -12,6 +12,8 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var postTableView: UITableView!
     
+    var selectedPost : Post?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +52,13 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentPost = threads["Memes"]![indexPath.item]
+        selectedPost = currentPost
         if currentPost.seen {
             return
         }
         currentPost.seen = true
         postTableView.reloadData()
-        //performSegue(withIdentifier: "toPic", sender: self)
+        performSegue(withIdentifier: "ToPic", sender: self)
     }
 
 
@@ -67,6 +70,15 @@ class PostViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //"toPic"
+        if let identifier = segue.identifier {
+            if identifier == "ToPic" {
+                if let dest = segue.destination as? PhotoViewController{
+                    if let post = selectedPost {
+                        dest.currentPost = post
+                    }
+                }
+            }
+        }
     }
     
 
