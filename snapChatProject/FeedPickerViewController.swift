@@ -10,6 +10,7 @@ import UIKit
 
 class FeedPickerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var feedTableView: UITableView!
+    var currentImage = #imageLiteral(resourceName: "dankMeme1") as UIImage
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,7 @@ class FeedPickerViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
         feedTableView.dataSource = self
         feedTableView.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +39,9 @@ class FeedPickerViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //post
+        let mypost = Post(inputImage: currentImage)
+        threads[threadNames[indexPath.item]]?.append(mypost)
+        
     }
 
 

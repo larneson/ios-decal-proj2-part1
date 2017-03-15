@@ -9,6 +9,7 @@
 import UIKit
 
 class ImagePickerController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    var currentImage = #imageLiteral(resourceName: "dankMeme1")
     
     @IBOutlet var imageCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -24,21 +25,22 @@ class ImagePickerController: UIViewController, UICollectionViewDataSource, UICol
 
     func selectImage(_ image: UIImage) {
         //The image being selected is passed in as "image".
+        currentImage = image
         //performSegue(withIdentifier: "choosePicSegue", sender: self)
         
     }
-    /*
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "choosePicSegue" {
-                if let dest = segue.destination as? FeedTableViewController{
-                    
+            if identifier == "imageToFeed" {
+                if let dest = segue.destination as? FeedPickerViewController{
+                    dest.currentImage = currentImage
                 }
             }
         }
         
         
-    }*/
+    }
     
     
     
